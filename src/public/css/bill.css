@@ -1,0 +1,18 @@
+
+
+.infor-cs{
+    width:70%;
+}
+
+.shop{
+    font-weight: 900;
+    color: #8991ff;
+}
+.title-table{
+    color: #727272;
+    font-weight: 500;
+}
+.total span{
+    font-weight: 500;
+    color: red;
+}

@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/css/addPr.css">
+<div class="background-body">
+    <h3 class="title-muc">Update category</h3>
+</div>
+<div class="main-addPr">
+    <div class="f-addPr">
+        <div class="intro">
+            <div class="infor-add">1. basic infor</div>
+        </div>
+        <form action="/managerCategories/actUpdate" class="form-add" enctype="multipart/form-data" method="post">
+            <p class="main-title">1. basic infor</p>
+            {{#if category}}
+            {{#each category }}
+            <div class="input">
+                <p class="childen-title">category Id</p>
+                <input type="text" name="id" id="" readonly value="{{this._id}}">
+            </div>
+            <div class="input">
+                <p class="childen-title">category name</p>
+                <input type="text" name="name" id="namect" value="{{this.name}}">
+                <p class="message"></p>
+            </div>
+            {{/each}}
+            {{/if}}
+            <button class="submit" type="submit">Update</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    validation({
+        form:'.form-add',
+        rule:[
+            validation.isrequire('#namect'),
+        ]
+    })
+</script>

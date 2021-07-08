@@ -1,0 +1,134 @@
+.lable-color {
+  border-bottom: 10px solid #6b74e7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Archivo', sans-serif;
+  color: #505252;
+}
+
+body {
+  background-color: #6b74e7;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+@media (max-width: 500px) {
+  body {
+    background-color: white;
+  }
+}
+
+.form {
+  width: 400px;
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.form .title {
+  font-size: 25px;
+  font-weight: 500;
+  color: #525252;
+  margin-bottom: 20px;
+}
+
+.form .imgALogo {
+  width: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+}
+
+.form .imgALogo img {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  margin-right: 10px;
+}
+
+.form .imgALogo p {
+  padding-top: 10px;
+  color: #6b74e7;
+  font-weight: 700;
+  position: relative;
+}
+
+.form form .t_person {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.form form .t_person input {
+  display: none;
+}
+
+.form form .t_person label {
+  position: relative;
+  border-bottom: 2px solid #6b74e7;
+  -webkit-transition: 0.1s linear;
+  transition: 0.1s linear;
+  cursor: pointer;
+}
+
+.form form .t_person label:nth-child(1) {
+  margin-right: 20px;
+}
+
+.form form .title-form {
+  margin-bottom: 10px;
+}
+
+.form form .title-form span {
+  color: red;
+}
+
+.form form .infor {
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  outline: none;
+  border: 1px solid #6b74e7;
+  border-radius: 5px;
+}
+
+.form form button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: #6b74e7;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.form form .message {
+  color: red;
+  position: relative;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=login.css.map */

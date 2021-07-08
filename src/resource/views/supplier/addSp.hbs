@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/css/addPr.css">
+<div class="background-body">
+    <h3 class="title-muc">Add supplier</h3>
+</div>
+<div class="main-addPr">
+    <div class="f-addPr">
+        <div class="intro">
+            <div class="intro-m">
+                <div class="line"></div>
+                <div class="infor-add">1. basic infor</div>
+                <div class="infor-add">2. image</div>
+            </div>
+        </div>
+        <form action="/managerSuppliers/insert" class="form-add" enctype="multipart/form-data" method="post">
+            <p class="main-title">1. basic infor</p>
+            <div class="price-quantity">
+                <div class="input">
+                    <p class="childen-title">name supplier</p>
+                    <input type="text" name="name" id="name">
+                    <p class="message"></p>
+                </div>
+                <div class="input">
+                    <p class="childen-title">Email</p>
+                    <input type="email" name="email" id="email">
+                    <p class="message"></p>
+                </div>
+            </div>
+
+            <p class="main-title">3. image</p>
+            <div class="input">
+                <p class="childen-title">Add new image</p>
+                <label for="addfile" class="lable-file">
+                    <img class="backg-img" src="https://img.icons8.com/cute-clipart/64/000000/edit-image.png" />
+                </label>
+                <input type="file" name="file" id="addfile">
+            </div>
+            <button class="submit" type="submit">Add new</button>
+        </form>
+    </div>
+</div>
+<script>
+    validation({
+        form:'.form-add',
+        rule:[
+            validation.isrequire('#name'),
+            validation.isrequire('#email'),
+            validation.checkemail('#email'),
+        ]
+    })
+</script>

@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="/css/product.css">
+<div class="background-body">
+  <h3 class="title-muc">Show products</h3>
+</div>
+<!-- main -->
+<div class="main-product">
+  {{!-- bar --}}
+  <div class="bar-product">
+    <p class="filters">filters</p>
+    <div class="bar-fuc-product">
+      <p class="title-func">Search</p>
+      <form action="" class="f-search" method="POST">
+        <div class="search">
+          <img alt="img" src="https://img.icons8.com/fluent-systems-regular/48/000000/search--v1.png" />
+          <input type="text" name="search" placeholder="name product">
+        </div>
+      </form>
+      <div>
+        <p class="title-func"><a href="/managerProduct"> All</a></p>
+      </div>
+      <div>
+        <p class="title-func t-category">Category
+          <i class="fas fa-plus down"></i>
+        </p>
+        <form action="" class="f-search f-category" method="get">
+          <div class="page-category">
+            {{#if categories1}}
+            {{#each categories1 as |category|}}
+            <button type="submit" name="category" value="{{category._id}}">
+              {{category.name}}
+            </button>
+            {{/each}}
+            {{/if}}
+          </div>
+        </form>
+      </div>
+      <div>
+        <p class="title-func t-suplier">
+          Supliers
+          <i class="fas fa-plus down"></i>
+        </p>
+        <form action="" class="f-search f-suplier" method="get">
+          <div class="page-category">
+            {{#if suppliers1}}
+            {{#each suppliers1 as |supplier|}}
+            <button type="submit" name="supplier" value="{{supplier._id}}">
+              {{supplier.name}}
+            </button>
+            {{/each}}
+            {{/if}}
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- product -->
+  <div class="products">
+    <div class="pr-contain">
+      {{#if listPrs}}
+      {{#each listPrs}}
+      <div class="product">
+        {{{phantram this.new_price this.old_price}}}
+        <img src="{{this.img}}" alt="img" class="img-product">
+        <p class="name-product">{{this.name}}</p>
+        <p class="price">
+          <span class="pr-l">{{this.new_price}} $</span>
+          {{{comparePrice this.new_price this.old_price}}}
+        </p>
+        <p class="evalue">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </p>
+        <div class="func-product">
+          <a href="/managerProduct/update/{{this._id}}" class="update-prd">update</a>
+          <a href="/managerProduct/delete/{{this._id}}" class="delete-prd">Delete</a>
+        </div>
+      </div>
+      {{/each}}
+      {{/if}}
+    </div>
+    <div class="product-page">
+      <p class="cur-page">page of products</p>
+      <form class="pages" action="" method="post">
+        {{#if count}}
+        {{#each count as |value|}}
+        {{{forCount value.count value.mainPage}}}
+        {{/each}}
+        {{/if}}
+      </form>
+    </div>
+  </div>
+</div>
