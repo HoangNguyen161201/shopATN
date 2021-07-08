@@ -45,6 +45,6 @@ mainRoute(app);
 // })
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`this is page localhost http://localhost:${port}`)
 })
