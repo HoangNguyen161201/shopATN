@@ -78,7 +78,7 @@ class managerProducts {
                                 console.log(arrcount);
 
                                 if (req.session.alertDl) {
-                                    res.render('product/showProducts', {
+                                    res.render('product/ShowProducts', {
                                         listPrs,
                                         alertDl: req.session.alertDl,
                                         categories1,
@@ -87,7 +87,7 @@ class managerProducts {
                                         nameAccount: r[1][0]
                                     });
                                 } else {
-                                    res.render('product/showProducts', {
+                                    res.render('product/ShowProducts', {
                                         listPrs,
                                         categories1,
                                         suppliers1,
