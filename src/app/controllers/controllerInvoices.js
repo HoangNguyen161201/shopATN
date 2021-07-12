@@ -48,7 +48,7 @@ class controllerInvoices {
                     }
                 }).then(products => {
                     products = products.map(pr => pr.toObject());
-                    res.render('invoices/addInvoice', {
+                    res.render('invoices/AddInvoice', {
                         customers,
                         products,
                         nameAccount: r[1][0]
