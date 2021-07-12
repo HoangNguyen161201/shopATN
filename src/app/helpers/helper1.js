@@ -74,6 +74,21 @@ var helper = {
     var r = (Number(a) / 700000) * 100;
     var c = Math.round(r);
     return "<div class='mkCharts' data-percent='" + c + "' data-size='100'  data-stroke='2' data-color='#525ce5'></div>";
+  },
+  checkMessage: (id1,id2,name,d,text)=>{
+    var day = new Date(d);
+    var date = day.getDate()+'/'+(day.getMonth()+1)+'/'+day.getFullYear();
+    if(id1 == id2){
+      return  "<div class='send'>"+
+      " <div>"+name+"</div>"+
+      "<div class='date'>"+date+"</div>"+
+      "<div class='infor_send rignt'>"+ text+ "</div></div>";
+    }
+    else{
+      return "<div> <div >"+name+
+      "</div><div class='date'>"+date+"</div><div class='infor_send'><img src='/img/logo.svg' alt='img'>"+
+      text+"</div></div>";
+    }
   }
 
 }

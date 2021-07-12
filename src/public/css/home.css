@@ -21,6 +21,12 @@
   color: #505252;
 }
 
+.hidden {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
 .dialogms {
   display: none;
   position: absolute;

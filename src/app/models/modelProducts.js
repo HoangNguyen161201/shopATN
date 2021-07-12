@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const mongoose_delete = require('mongoose-delete');
+// Define the fields and the type of each field
 const product = new mongoose.Schema({
     _id: Number,
     name: String,

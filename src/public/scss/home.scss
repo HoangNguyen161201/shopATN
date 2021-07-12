@@ -22,6 +22,11 @@
     font-family: 'Archivo', sans-serif;
     color: rgb(80, 82, 82);
 }
+.hidden{
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
 .dialogms{
     display: none;
     position: absolute;

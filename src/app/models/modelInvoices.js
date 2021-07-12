@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const mongoose_delete = require('mongoose-delete');
+// Define the fields and the type of each field
 const invoice = new mongoose.Schema({
     id_order: Number,
     id_customer: Number,

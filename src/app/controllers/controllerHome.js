@@ -1,10 +1,15 @@
+
+//  connect to helper to check account
 const checkAccount = require("../helpers/checkAccount");
+// connect to models
 const modelCustomers = require("../models/modelCustomers");
 const modelSuppliers = require("../models/modelSuppliers");
 const modelInvoice = require("../models/modelInvoices");
 const modelProducts = require("../models/modelProducts");
 class home {
+    // show dashboard
     async show(req, res) {
+        // Check if your account is logged in
         if (checkAccount.logged(req.cookies) == 1) {
             var r = checkAccount.checkAccount(req.cookies);
             var total_month;
@@ -15,6 +20,7 @@ class home {
             var suppliers;
             var customers;
             var pr_month;
+            
             await modelInvoice.aggregate().match({
                 date_to_order: {
                     $gte: new Date(new Date().getFullYear(), 1, 1)
@@ -34,7 +40,7 @@ class home {
             }).exec((err, doc) => {
                 total_month = doc;
             });
-
+            // get count of order
             await modelInvoice.aggregate().group({
                 _id: '$id_order',
             }).group({
@@ -47,18 +53,19 @@ class home {
                     count_order = count_order1;
                 }
             })
+            // get count of customer
             await modelCustomers.find({}).countDocuments({}).then(count_cs1 => {
                 count_cs = count_cs1;
             })
-
+            // get infor of 5 suppliers
             await modelSuppliers.find({}).limit(5).then(e => {
                 suppliers = e.map(es => es.toObject());
             })
+            // get infor of 5 customers
             await modelCustomers.find({}).limit(5).then(e => {
                 customers = e.map(es => es.toObject());
             })
-
-
+            // get total price in today
             await modelInvoice.aggregate().match({
                 date_to_order: {
                     $gte: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 0, 0, 0, 0)
@@ -72,7 +79,7 @@ class home {
                 if (total[0] != null) {
                     total_today = total[0].total;
                 }
-
+                // Show the amount earned so far
                 modelInvoice.aggregate().group({
                     _id: null,
                     total: {
@@ -80,9 +87,11 @@ class home {
                     }
                 }).exec((err, total_year1) => {
                     total_year = total_year1;
+                    // get Top 3 best selling products
                     modelProducts.aggregate().sort({
                         quantity_sold: -1
                     }).limit(3).exec((err, productsBest) => {
+                        // get Top 5 best selling products in month
                         modelInvoice.aggregate().match({
                             date_to_order: {
                                 $gte: new Date(new Date().getFullYear(), new Date().getMonth(), 0, 0, 0, 0, 0)
@@ -124,8 +133,9 @@ class home {
                 })
 
             })
-        } else {
-
+        }
+        // If you are not logged in, go back to the login page
+        else {
             res.redirect("/login");
         }
     }

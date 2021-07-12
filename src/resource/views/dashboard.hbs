@@ -48,7 +48,7 @@
                     {{#if suppliers}}
                     {{#each suppliers as |value|}}
                     <div class="supplier">
-                        <img src="{{value.img}}" alt="">
+                        <img src="{{value.img}}" alt="img">
                         <div>
                             <p>{{value.name}}</p>
                             <p>{{value.email}}</p>
@@ -91,7 +91,7 @@
                         {{#if productsBest}}
                         {{#each productsBest}}
                         <div class="swiper-slide">
-                            <img src="{{this.img}}" alt="">
+                            <img src="{{this.img}}" alt="img">
                             <div class="infor">
                                 <p>{{this.name}}</p>
                                 <p>price: {{this.new_price}} $</p>
@@ -142,7 +142,7 @@
                                 <th scope="row">{{this._id}}</th>
                                 {{#each this.product as |value|}}
                                     <th scope="row">
-                                        <img src="{{value.img}}" alt="" srcset="">
+                                        <img src="{{value.img}}" alt="img" srcset="">
                                     </th>
                                     <th scope="row">{{value.name}}</th>
                                 {{/each}}
