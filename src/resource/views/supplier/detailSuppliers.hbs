@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="/css/detail.css">
+<div class="background-body">
+    {{#if statistical}}
+    {{#each statistical}}
+    {{#each _id as |value|}}
+    <h3 class="title-muc">{{value.name}} supplier</h3>
+    {{/each}}
+
+    {{/each}}
+    {{/if}}
+</div>
+<div class="body-detail">
+    <div class="range">
+        {{#if statistical}}
+        {{#each statistical}}
+        <div class="statistical type-pr">
+            <p class="title-sta">type product</p>
+            <i class="fas fa-boxes"></i>
+            <p class="result-sta">{{this.type}}</p>
+        </div>
+        <div class="statistical quantity-pr">
+            <p class="title-sta">Quantity products</p>
+            <i class="fas fa-truck-loading"></i>
+            <p class="result-sta">{{this.quantity}}</p>
+        </div>
+        <div class="statistical total">
+            <p class="title-sta">Total</p>
+            <i class="fas fa-money-check-alt"></i>
+            <p class="result-sta">{{this.total}}$</p>
+        </div>
+        {{/each}}
+        {{/if}}
+    </div>
+
+    <div class="contain-ct">
+        {{#if statistical}}
+        {{#each statistical}}
+        {{#each _id as |value|}}
+        <a class="show-detail" href="/managerProduct?supplier={{value._id}}">Show details</a>
+        {{/each}}
+
+        {{/each}}
+        {{/if}}
+        <div class="table-infor">
+            <table id="example" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>img</th>
+                        <th>Name</th>
+                        <th>New price</th>
+                        <th>Old price</th>
+                        <th>Supplier</th>
+                        <th>Content</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if products}}
+                    {{#each products as |value| }}
+                    <tr>
+                        <td>{{value._id}}</td>
+                        <td><img src="{{value.img}}" alt="img" class="img"></td>
+                        <td>{{value.name}}</td>
+                        <td>{{value.new_price}}</td>
+                        <td>{{value.old_price}}</td>
+                        <td>{{value.suppliers.name}}</td>
+                        <td>{{value.content}}</td>
+                        {{/each}}
+                        {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

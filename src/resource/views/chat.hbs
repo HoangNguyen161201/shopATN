@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="/css/chat.css">
+<div class="background-body">
+    <h3 class="title-muc">Chat</h3>
+</div>
+<div class="content">
+    <div class="infor">
+        <div class="me">
+            <div class="title">
+                Infor
+            </div>
+            <img src="/img/logo.svg" alt="img">
+            <p class="name">
+                {{#if nameAccount}}
+                    {{nameAccount}}
+                {{/if}}
+            </p>
+            <p class="status">available</p>
+        </div>
+    </div>
+    <div class="chat">
+        <div class="title">
+           <p>Group chat</p>
+           <p class="status2">Messages</p>
+        </div>
+        <div class="content-chat">
+            <div id="messages" >
+                {{#if messages}}
+                    {{#each messages}}
+                        {{{checkMessage this.id_account this.checkid this.name this.date this.message}}}
+                    {{/each}}
+                {{/if}}
+                 
+            </div>
+                <form id="form" action="">
+                <input id="input" placeholder="Write your message..." autocomplete="off" />
+                <button><i class="fas fa-paper-plane"></i></button>
+                </form>
+        </div>
+    </div>
+</div>
+
+ <script src="/socket.io/socket.io.js"></script>
+  <script>
+        document.getElementById('messages').scrollTo(0,document.getElementById('messages').scrollHeight);
+        {{#if id}}
+            var id = {{id}};
+        {{/if}}
+
+        var socket = io ();
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (input.value) {
+            {{#if id}}
+                socket.emit('chat message', [{{id}},`{{nameAccount}}`,input.value,new Date()]);
+            {{/if}}
+            input.value = '';
+            }
+        });
+         socket.on('chat message', function(msg) {
+            if(msg[0] == id){
+                var div = document.createElement('div');
+                div.classList.add('send');
+                messages.appendChild(div);
+
+                var name =  document.createElement('div');
+                name.innerHTML = msg[1];
+
+                var d = document.createElement('div');
+                d.classList.add('date');
+                var day = new Date(msg[3]);
+                d.innerHTML = day.getDate()+"/"+(day.getMonth()+1)+"/"+day.getFullYear();
+
+                var item = document.createElement('div');
+                item.classList.add('infor_send');
+                item.classList.add('rignt');
+                item.textContent = msg[2];
+                div.appendChild(name);
+                div.appendChild(d);
+                div.appendChild(item);
+                messages.scrollTo(0, messages.scrollHeight);
+            }
+            else{
+
+                var div = document.createElement('div');
+
+                messages.appendChild(div);
+
+                var name =  document.createElement('div');
+                name.innerHTML = msg[1];
+
+                var d = document.createElement('div');
+                d.classList.add('date');
+                var day = new Date(msg[3]);
+                d.innerHTML = day.getDate()+"/"+(day.getMonth()+1)+"/"+day.getFullYear();
+
+                var item = document.createElement('div');
+                item.classList.add('infor_send');
+                var img = document.createElement('img');
+                img.src = '/img/logo.svg';
+                item.appendChild(img);
+                var text = document.createElement('p');
+                text.innerHTML = msg[2];
+                item.appendChild(text);
+                div.appendChild(name);
+                div.appendChild(d);
+                div.appendChild(item);
+                messages.scrollTo(0, messages.scrollHeight);
+            }
+        });
+  </script>

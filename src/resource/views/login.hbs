@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/img/logo.svg" type="image/x-icon" />
+    <link rel="shortcut icon" href="/img/logo.svg" type="image/x-icon" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATN shop</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.9/css/fixedHeader.bootstrap5.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+    <div class="form">
+        <div class="imgALogo">
+            <img src="/img/logo.svg" alt="img">
+            <p>ATNshop</p>
+        </div>
+        <p class="title">Login to account</p>
+        <p>Access to the most powerful program in the entire design and web industry.</p>
+        <form action="login" method="POST" id="form_login">
+            <div class="t_person">
+                {{#if admin}}
+                <label style="border-bottom: 10px solid #6b74e7;" class="l-admin" for="admin">Admin</label>
+                <input type="radio" name="person" checked value="admin" id="admin">
+                {{else }}
+                <label style="border-bottom: 2px solid #6b74e7;" class="l-admin" for="admin">Admin</label>
+                <input type="radio" name="person" value="admin" id="admin">
+                {{/if}}
+                {{#if staff}}
+                <label class="l-staff" style="border-bottom: 10px solid #6b74e7;" for="staff">Staff</label>
+                <input type="radio" name="person" checked value="staff" id="staff">
+                {{else}}
+                <label style="border-bottom: 2px solid #6b74e7;" class="l-staff" for="staff">Staff</label>
+                <input type="radio" name="person" value="staff" id="staff">
+                {{/if}}
+            </div>
+            <p class="title-form">Account <span>*</span></p>
+            {{#if emailFalse}}
+            <input class="infor" name="account" style="border: 1px solid red;" id="email" value="{{email}}"
+                placeholder="Email" type="text">
+            <p class="message">{{emailFalse}}</p>
+            {{else}}
+            <input class="infor" name="account" id="email" value="{{email}}" placeholder="Email" type="text">
+            <p class="message"></p>
+            {{/if}}
+
+            <p class="title-form">Password <span>*</span></p>
+            {{#if passwordFalse}}
+            <input style="border: 1px solid red;" class="infor" type="password" value="{{password}}"
+                placeholder="Password" name="password" id="password">
+            <p class="message">{{passwordFalse}}</p>
+            {{else}}
+            <input class="infor" type="password" placeholder="Password" value="{{password}}" name="password" id="password">
+            <p class="message"></p>
+            {{/if}}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script src="/js/validation.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        validation({
+            form:'#form_login',
+            rule:[
+                validation.isrequire('#email'),
+                validation.isrequire('#password'),
+                validation.checkemail('#email'),
+            ],
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(".l-admin").click(function () {
+                $(this).css("border-bottom", "10px solid #6b74e7");
+                $(".l-staff").css("border-bottom", "2px solid #6b74e7");
+            })
+            $(".l-staff").click(function () {
+                $(this).css("border-bottom", "10px solid #6b74e7");
+                $(".l-admin").css("border-bottom", "2px solid #6b74e7");
+            })
+            if (document.getElementById('admin').checked == false && document.getElementById('staff').checked == false) {
+                document.getElementById('admin').checked = true;
+                document.querySelector('.l-admin').style.borderBottom = "10px solid #6b74e7";
+            }
+        })
+    </script>
+</body>
+
+</html>

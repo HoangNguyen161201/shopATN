@@ -1,0 +1,96 @@
+.brand{
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+@mixin mobile-767 {
+    @media (max-width:767px) {
+        @content
+    }
+}
+.dataTables_filter{
+    @include mobile-767(){
+        padding-top: 15px;
+    }
+}
+.dataTables_info{
+    @include mobile-767(){
+        display: none;
+    }
+}
+.pagination{
+    @include mobile-767(){
+        padding-top: 20px;
+    }
+}
+.page-item.active .page-link{
+    background-color: #525ce5;
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+}
+.body-ct{
+    margin-top: -50px;
+    width: 100%;
+    position: relative;
+    min-height: calc(100vh - 200px);
+    height: auto;
+    padding: 0px 20px;
+    .contain-ct{
+        width: 100%;
+        position: relative;
+        background-color: white;
+        font-family: 'Archivo', sans-serif;
+        padding: 30px 20px;
+        border-radius: 5px;
+        overflow: auto;
+        table{
+            width: 100%;
+            min-width: 600px;
+            thead{
+                height: 50px;
+                min-height: 50px;
+                line-height: 50px;
+            }
+            tbody{
+                tr{
+                    height: 50px;
+                    min-height: 50px;
+                    white-space: nowrap;
+                    td{
+                        line-height: 50px;
+                        white-space: nowrap;
+                    }
+                }
+            }
+            tfoot{
+                height: 20px;
+                min-height: 20px;
+                line-height: 20px;
+            }
+        }
+    }
+}
+
+.func-ct{
+    i{
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        line-height: 35px;
+        border-radius: 5px;
+        font-size: 14px;
+        color: white;
+        cursor: pointer;
+    }
+}
+.update-ct{
+    background-color: #525ce5d3;
+}
+.delete-ct{
+    background-color: #e55252c9;
+}
+.detail-ct{
+    background-color: #99e552;
+}

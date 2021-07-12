@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="/css/detail.css">
+<div class="background-body">
+    {{#if tk}}
+    {{#each tk}}
+    <h3 class="title-muc">Detail of order {{this._id}}</h3>
+    {{/each}}
+    {{/if}}
+</div>
+<div class="body-detail">
+    <div class="range">
+        {{#if tk}}
+        {{#each tk}}
+        <div class="statistical type-pr">
+            <p class="title-sta">type product</p>
+            <i class="fas fa-boxes"></i>
+            <p class="result-sta">{{this.type}}</p>
+        </div>
+        <div class="statistical quantity-pr">
+            <p class="title-sta">Quantity products</p>
+            <i class="fas fa-truck-loading"></i>
+            <p class="result-sta">{{this.quantity}}</p>
+        </div>
+        <div class="statistical total">
+            <p class="title-sta">Total</p>
+            <i class="fas fa-money-check-alt"></i>
+            <p class="result-sta">{{this.total}}$</p>
+        </div>
+        {{/each}}
+        {{/if}}
+    </div>
+    <div class="contain-ct">
+        {{#if customer}}
+        <p class="title-item">Customer</p>
+        <div class="customer">
+            {{#each customer}}
+            <p>Customer Id: {{this._id}}</p>
+            <p>Customer name: {{this.name}}</p>
+            <p>Customer email: {{this.email}}</p>
+            <p>Customer phone: {{this.numberPhone}}</p>
+            {{/each}}
+        </div>
+        {{/if}}
+        <p class="title-item">Products</p>
+        <div class="table-infor">
+            <table id="example" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name product</th>
+                        <th>Image product</th>
+                        <th>price</th>
+                        <th>quantity</th>
+                        <th>total price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if result}}
+                    {{#each result as |value| }}
+                    <tr>
+                        {{#each value.product as |product|}}
+                        <td>{{product._id}}</td>
+                        <td>{{product.name}}</td>
+                        <td><img class="img" src="{{product.img}}" alt="img" srcset=""></td>
+                        <td>{{product.new_price}}$</td>
+                        {{/each}}
+                        <td>{{value.quantity_pr}}</td>
+                        <td>{{value.total}}</td>
+                        {{/each}}
+                        {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

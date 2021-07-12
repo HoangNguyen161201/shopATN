@@ -1,0 +1,48 @@
+.body-ct{
+    position: relative;
+    width: auto;
+    margin-top: -50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 500px;
+    background-color: white;
+    z-index: 10;
+    border-radius: 5px;
+    padding: 30px 20px;
+    padding-right: 0px;
+}
+.content{
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(auto-fill,minmax(310px,1fr));
+}
+.title{
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.781);
+    font-weight: 500;
+}
+.excel{
+    border: 2px dotted #00fc4c93;
+    height: 60px;
+    position: relative;
+    display: block;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    img{
+        margin-right: 20px;
+    }
+    p{
+        height: 100%;
+        line-height: 60px;
+        margin: 0;
+        color: #383838;
+        font-weight: 500;
+    }
+}

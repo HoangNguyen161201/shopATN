@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/css/addPr.css">
+<div class="background-body">
+    <h3 class="title-muc">Add product</h3>
+</div>
+<div class="main-addPr">
+    <div class="f-addPr">
+        <div class="intro">
+            <div class="intro-m">
+                <div class="line"></div>
+                <div class="infor-add">1. basic infor</div>
+                <div class="infor-add">2. Email & number</div>
+            </div>
+        </div>
+        <form action="/managerCustomers/insert" class="form-add" enctype="multipart/form-data" method="post">
+            <p class="main-title">1. basic infor</p>
+            <div class="input">
+                <p class="childen-title">Customer name</p>
+                <input type="text" name="name" id="name">
+                <p class="message"></p>
+            </div>
+            <p class="main-title">2. Email & number</p>
+            <div class="price-quantity">
+                <div class="input">
+                    <p class="childen-title">Email</p>
+                    <input type="email" name="email" id="email">
+                    <p class="message"></p>
+                </div>
+                <div class="input">
+                    <p class="childen-title">Number phone</p>
+                    <input type="tel" name="numberPhone" id="phone">
+                    <p class="message"></p>
+                </div>
+            </div>
+            <button class="submit" type="submit">Add new</button>
+        </form>
+    </div>
+
+</div>
+<script>
+    validation({
+        form:'.form-add',
+        rule:[
+            validation.isrequire('#name'),
+            validation.isrequire('#email'),
+            validation.isrequire('#phone'),
+            validation.checkemail('#email'),
+            validation.isnumber('#phone'),
+        ]
+    })
+</script>
